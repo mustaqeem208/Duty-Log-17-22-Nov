@@ -1,0 +1,231 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logbook - Anu Akash Travel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 15px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #0d47a1;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #fff;
+            border-bottom: 2px solid #64b5f6;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .driver-info {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+        .vehicle-no {
+            background-color: white;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 10px;
+            border: 2px solid #000;
+        }
+        .total-box {
+            background-color: #e3f2fd; /* Light Blue for Total */
+            color: #0d47a1;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .total-box span {
+            font-size: 26px;
+            display: block;
+            margin-top: 5px;
+            color: #000;
+        }
+        .log-entry {
+            border-bottom: 1px solid #eee;
+            padding: 15px;
+            position: relative; /* For positioning alerts */
+        }
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        
+        /* HEAVY DUTY Style */
+        .log-entry.heavy-duty {
+            background-color: #fff5f5; /* Light Red Background */
+            border-left: 5px solid #c62828; /* Red Indicator Line */
+        }
+
+        .date-badge {
+            background-color: #eee;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 14px;
+            color: #444;
+            line-height: 1.5;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #ddd;
+        }
+
+        /* KM Highlight Styles */
+        .km-highlight {
+            float: right;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        /* Normal KM (Green) */
+        .km-normal {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        /* Heavy KM (Red) */
+        .km-heavy {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            box-shadow: 0 2px 4px rgba(198, 40, 40, 0.1);
+        }
+
+        .remarks {
+            margin-top: 12px; 
+            padding-top: 8px; 
+            border-top: 1px dashed #ccc; 
+            font-size: 13px; 
+            color: #555; 
+            font-style: italic;
+            background-color: #fffbe6;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #999;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="company-name">Anu Akash Travel</div><br>
+        <div class="driver-info">Driver: Mohammad Mustaqeem</div>
+        <div class="vehicle-no">TS07UM8831</div>
+    </div>
+
+    <div class="total-box">
+        Total Running (5 Days)
+        <span>1,084 km</span>
+    </div>
+
+    <div class="log-entry">
+        <span class="date-badge">📅 17/11/2025</span>
+        <span class="km-highlight km-normal">134 km</span>
+        <div class="content">3 Drops
+1 RGI AIRPORT TO GACHIBOWLI
+2 RGI AIRPORT TO BORABANDA
+3 RGI AIRPORT IDPL</div>
+    </div>
+
+    <div class="log-entry">
+        <span class="date-badge">📅 18/11/2025</span>
+        <span class="km-highlight km-normal">174 km</span>
+        <div class="content">Pick-up:
+• IDPL → RGI Airport (1)
+Drop:
+• RGI Airport → Kompally (1)</div>
+        
+        <div class="remarks">
+            <strong>Remarks:</strong> Returned to Ameerpet after drop. Instructed to off-duty and report tomorrow morning for pickup.
+        </div>
+    </div>
+
+    <div class="log-entry">
+        <span class="date-badge">📅 19/11/2025</span>
+        <span class="km-highlight km-normal">212 km</span>
+        <div class="content">Pick-ups (2):
+1. Suraram TO RGI ARPOT
+2. Toli Chowki TO RGI AIRPORT
+Drops (3)
+1 RGI AIRPORT TO BALAPUR ROAD
+2 RGI AIRPORT TO MALAK PET
+3 RGI AIRPORT TO IDPL</div>
+    </div>
+
+    <div class="log-entry">
+        <span class="date-badge">📅 21/11/2025</span>
+        <span class="km-highlight km-normal">214 km</span>
+        <div class="content">3 Pick up
+7:30 SURARAM TO RGI ARPOT
+12:15 ATTAPUR TO RGI ARPOT
+1:30 BALLAGUDA TO RGI AIRPORT
+1 DROP
+CLOSE DROP 5:00 RGI AIRPORT TO SURARAM</div>
+    </div>
+
+    <div class="log-entry heavy-duty">
+        <span class="date-badge" style="color:#c62828">📅 22/11/2025</span>
+        <span class="km-highlight km-heavy">⚠ 350 KM</span>
+        <div class="content">2 pick up
+1 SURARAM TO RGI ARPOT
+2 Bahadurpally to RGI AIRPORT
+
+2 drop
+1 RGI AIRPORT TO JALLAPUR
+2RGI AIRPORT TO SURARAM</div>
+    </div>
+
+    <div class="footer">Generated for Record Keeping</div>
+</div>
+
+</body>
+</html>
