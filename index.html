@@ -1,277 +1,284 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logbook - Anu Akash Travel</title>
+    <title>Daily Duty Log - Anu Akash</title>
     <style>
+        :root {
+            --primary: #004d40;
+            --accent: #00695c;
+            --danger: #d32f2f;
+            --light: #f5f7fa;
+            --white: #ffffff;
+            --text: #2c3e50;
+        }
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f6f8;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #eceff1;
             margin: 0;
-            padding: 15px;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
             padding: 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow: hidden;
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
         }
-        .header {
-            background-color: #0d47a1;
+        .profile-header {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
             color: white;
-            padding: 25px 20px;
+            padding: 30px 20px 40px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 20px rgba(13, 71, 161, 0.3);
             text-align: center;
         }
-        .company-name {
-            font-size: 24px;
-            font-weight: bold;
+        .driver-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 10px;
-            color: #fff;
-            border-bottom: 2px solid #64b5f6;
-            display: inline-block;
-            padding-bottom: 5px;
+            font-weight: bold;
         }
-        .driver-info {
+        .driver-name {
+            margin: 15px 0 5px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .car-number {
             font-size: 18px;
-            margin-top: 10px;
-            color: #ffeb3b;
-            font-weight: bold;
-        }
-        .vehicle-no {
-            background-color: white;
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 16px;
-            display: inline-block;
-            margin-top: 10px;
-            border: 2px solid #000;
-        }
-        .total-box {
-            background-color: #e3f2fd; /* Light Blue for Total */
-            color: #0d47a1;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .total-box span {
-            font-size: 26px;
-            display: block;
-            margin-top: 5px;
-            color: #000;
-        }
-        .log-entry {
-            border-bottom: 1px solid #eee;
-            padding: 15px;
-            position: relative; /* For positioning alerts */
-        }
-        .log-entry:last-child {
-            border-bottom: none;
-        }
-        
-        /* HEAVY DUTY Style */
-        .log-entry.heavy-duty {
-            background-color: #fff5f5; /* Light Red Background */
-            border-left: 5px solid #c62828; /* Red Indicator Line */
-        }
-
-        .date-badge {
-            background-color: #eee;
-            color: #555;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 14px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .content {
-            white-space: pre-wrap;
+            opacity: 0.9;
             font-family: monospace;
-            font-size: 14px;
-            color: #444;
-            line-height: 1.5;
-            background: #fafafa;
-            padding: 10px;
-            border-radius: 5px;
-            border-left: 3px solid #ddd;
-        }
-
-        /* KM Highlight Styles */
-        .km-highlight {
-            float: right;
-            padding: 4px 10px;
+            background: #fff;
+            color: #0d47a1;
+            padding: 2px 8px;
             border-radius: 4px;
             font-weight: bold;
-            font-size: 14px;
         }
-        
-        /* Normal KM (Green) */
-        .km-normal {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -30px;
+            padding: 0 15px;
         }
-
-        /* Heavy KM (Red) */
-        .km-heavy {
-            background-color: #ffebee;
-            color: #c62828;
-            border: 1px solid #ef9a9a;
-            box-shadow: 0 2px 4px rgba(198, 40, 40, 0.1);
-        }
-
-        .remarks {
-            margin-top: 12px; 
-            padding-top: 8px; 
-            border-top: 1px dashed #ccc; 
-            font-size: 13px; 
-            color: #555; 
-            font-style: italic;
-            background-color: #fffbe6;
-            padding: 8px;
-            border-radius: 4px;
-        }
-
-        .footer {
+        .stat-card {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             text-align: center;
-            padding: 10px;
-            font-size: 12px;
-            color: #999;
-            background: #f9f9f9;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        .stat-label { font-size: 12px; color: #7f8c8d; text-transform: uppercase; }
+        .stat-value { font-size: 22px; font-weight: 800; color: #2c3e50; }
+        .log-feed {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid #bdc3c7;
+            transition: transform 0.2s;
+        }
+        .day-card:active { transform: scale(0.98); }
+        .status-normal { border-left-color: #2e7d32; }
+        .status-heavy { border-left-color: #c62828; }
+        .status-off { border-left-color: #78909c; opacity: 0.8; }
+        .card-header {
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .date { font-weight: 700; color: #34495e; display: flex; align-items: center; gap: 6px; }
+        .km-badge { font-size: 13px; font-weight: bold; padding: 4px 8px; border-radius: 6px; }
+        .km-badge.normal { background: #e8f5e9; color: #2e7d32; }
+        .km-badge.heavy { background: #ffebee; color: #c62828; }
+        .km-badge.off { background: #cfd8dc; color: #455a64; }
+        .card-body { padding: 15px; font-size: 14px; line-height: 1.6; }
+        .duty-time { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+        .trip-list { list-style: none; padding: 0; margin: 0; }
+        .trip-item { position: relative; padding-left: 15px; margin-bottom: 6px; color: #555; }
+        .trip-item::before { content: "•"; position: absolute; left: 0; color: #ccc; }
+        .telugu { font-family: 'Nirmala UI', sans-serif; color: #d81b60; }
+        .section-title { font-size: 11px; text-transform: uppercase; color: #999; letter-spacing: 1px; margin: 10px 0 5px; font-weight: bold; }
+        .heavy-warning { background: #ffebee; color: #b71c1c; padding: 8px; border-radius: 6px; font-size: 12px; margin-top: 10px; display: flex; align-items: center; gap: 5px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <div class="company-name">Anu Akash Travel</div><br>
-        <div class="driver-info">Driver: Mohammad Mustaqeem</div>
-        <div class="vehicle-no">TS07UM8831</div>
+    <div class="profile-header">
+        <span class="driver-badge">Anu Akash Travel</span>
+        <div class="driver-name">Mohammad Mustaqeem</div>
+        <div class="car-number">TS07UM8831</div>
     </div>
 
-    <div class="total-box">
-        Total Running (6 Days)
-        <span>1,346 km</span>
-    </div>
-
-    <div class="log-entry">
-        <span class="date-badge">📅 17/11/2025</span>
-        <span class="km-highlight km-normal">134 km</span>
-        <div class="content">3 Drops
-1 RGI AIRPORT TO GACHIBOWLI
-2 RGI AIRPORT TO BORABANDA
-3 RGI AIRPORT IDPL</div>
-    </div>
-
-    <div class="log-entry">
-        <span class="date-badge">📅 18/11/2025</span>
-        <span class="km-highlight km-normal">174 km</span>
-        <div class="content">Pick-up:
-• IDPL → RGI Airport (1)
-Drop:
-• RGI Airport → Kompally (1)</div>
-        
-        <div class="remarks">
-            <strong>Remarks:</strong> Returned to Ameerpet after drop. Instructed to off-duty and report tomorrow morning for pickup.
+    <div class="stats-container">
+        <div class="stat-card">
+            <div>
+                <div class="stat-label">Total Running (8 Days)</div>
+                <div class="stat-value">1,346 KM</div>
+            </div>
+            <div style="font-size: 30px;">🚘</div>
         </div>
     </div>
 
-    <div class="log-entry">
-        <span class="date-badge">📅 19/11/2025</span>
-        <span class="km-highlight km-normal">212 km</span>
-        <div class="content">Pick-ups (2):
-1. Suraram TO RGI ARPOT
-2. Toli Chowki TO RGI AIRPORT
-Drops (3)
-1 RGI AIRPORT TO BALAPUR ROAD
-2 RGI AIRPORT TO MALAK PET
-3 RGI AIRPORT TO IDPL</div>
-    </div>
+    <div class="log-feed">
 
-        <div class="log-entry" style="background-color: #fffde7;">
-        <span class="date-badge">📅 20/11/2025</span>
-        <span class="km-highlight" style="background-color: #fff; border: 1px solid #ffecb3; color: #f57f17;">NO DUTY</span>
-        <div class="content" style="color: #444;">
-            <strong>Status:</strong> Ready but No Pickup Received.
-            <br><br>
-            1. <strong>Prev Duty (19th):</strong> Worked <strong>17 Hours</strong> (8:00 AM - 01:00 AM).
-            <br>
-            2. <strong>20th:</strong> Waited from 11:00 AM.
-            <br>
-            3. <strong>Issue:</strong> Office called at 3 PM asking why absent. I clarified: <em>"No pickup details were sent to me."</em>
+        <div class="day-card status-normal">
+            <div class="card-header">
+                <div class="date">📅 17/11/2025</div>
+                <div class="km-badge normal">134 KM</div>
+            </div>
+            <div class="card-body">
+                <div class="section-title">3 DROPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item">RGI Airport → Gachibowli</li>
+                    <li class="trip-item">RGI Airport → Borabanda</li>
+                    <li class="trip-item">RGI Airport → IDPL</li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-
-    
-    
-    <div class="log-entry">
-        <span class="date-badge">📅 21/11/2025</span>
-        <span class="km-highlight km-normal">214 km</span>
-        <div class="content">3 Pick up
-7:30 SURARAM TO RGI ARPOT
-12:15 ATTAPUR TO RGI ARPOT
-1:30 BALLAGUDA TO RGI AIRPORT
-1 DROP
-CLOSE DROP 5:00 RGI AIRPORT TO SURARAM</div>
-    </div>
-
-    <div class="log-entry heavy-duty">
-        <span class="date-badge" style="color:#c62828">📅 22/11/2025</span>
-        <span class="km-highlight km-heavy">⚠ 350 KM</span>
-        <div class="content">2 pick up
-1 SURARAM TO RGI ARPOT
-2 Bahadurpally to RGI AIRPORT
-
-2 drop
-1 RGI AIRPORT TO JALLAPUR
-2RGI AIRPORT TO SURARAM</div>
-    </div>
-    
-        <div class="log-entry">
-    <span class="date-badge" style="color:#c62828">📅 23/11/2025</span>
-    <span class="km-highlight" style="background:#555; color:#fff">🛑 OFF / REST</span>
-    <div class="content">Status: SUNDAY LEAVE
-
-No Duty.
-(Heavy duty ke baad aaram kiya)</div>
+        <div class="day-card status-normal">
+            <div class="card-header">
+                <div class="date">📅 18/11/2025</div>
+                <div class="km-badge normal">174 KM</div>
+            </div>
+            <div class="card-body">
+                <ul class="trip-list">
+                    <li class="trip-item"><span style="color:green">Pick:</span> IDPL → Airport</li>
+                    <li class="trip-item"><span style="color:red">Drop:</span> Airport → Kompally</li>
+                </ul>
+                <div style="margin-top:8px; font-size:12px; color:#666; font-style:italic;">
+                    *Returned to Ameerpet. Ordered to off-duty.
+                </div>
+            </div>
         </div>
-    
-    
-              <div class="log-entry heavy-duty">
-    <span class="date-badge" style="color:#c62828">📅 24/11/2025</span>
-    <span class="km-highlight km-heavy">⚠ 262 KM</span>
-    <div class="content">Duty: 11 Hrs 45 Mins (6:00 AM - 5:45 PM)
 
-3 pick up
-1 Bowenpally
-2 Attapur TO Airport
-3 Airport TO JAKKULASRICHARAN (జక్కులశ్రిచారాన్)
+        <div class="day-card status-normal">
+            <div class="card-header">
+                <div class="date">📅 19/11/2025</div>
+                <div class="km-badge normal">212 KM</div>
+            </div>
+            <div class="card-body">
+                <div class="duty-time">Worked 17 Hours (8AM - 1AM)</div>
+                <div class="section-title">2 PICKUPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item">Suraram → Airport</li>
+                    <li class="trip-item">Toli Chowki → Airport</li>
+                </ul>
+                <div class="section-title">3 DROPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item">Airport → Balapur Road</li>
+                    <li class="trip-item">Airport → Malakpet</li>
+                    <li class="trip-item">Airport → IDPL</li>
+                </ul>
+            </div>
+        </div>
 
-3 drop
-1 JAKKULASRICHARAN TO Airport ORR
-2 Airport Departure TO Local
-3 Airport TO Abids</div>
-              </div>
+        <div class="day-card status-off">
+            <div class="card-header">
+                <div class="date">📅 20/11/2025</div>
+                <div class="km-badge off">NO DUTY</div>
+            </div>
+            <div class="card-body">
+                <div style="color:#d32f2f; font-weight:bold;">⚠️ Issue Reported</div>
+                <div style="font-size:13px; margin-top:5px;">
+                    Waited from 11:00 AM. No pickup details received. Clarified with office at 3 PM.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card status-normal">
+            <div class="card-header">
+                <div class="date">📅 21/11/2025</div>
+                <div class="km-badge normal">214 KM</div>
+            </div>
+            <div class="card-body">
+                <div class="section-title">TIMELINE</div>
+                <ul class="trip-list">
+                    <li class="trip-item">07:30 - Suraram → Airport</li>
+                    <li class="trip-item">12:15 - Attapur → Airport</li>
+                    <li class="trip-item">01:30 - Ballaguda → Airport</li>
+                    <li class="trip-item">05:00 - Airport → Suraram (Close)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="day-card status-heavy">
+            <div class="card-header">
+                <div class="date" style="color:#c62828">📅 22/11/2025</div>
+                <div class="km-badge heavy">⚠ 350 KM</div>
+            </div>
+            <div class="card-body">
+                <div class="section-title">2 PICKUPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item">Suraram → Airport</li>
+                    <li class="trip-item">Bahadurpally → Airport</li>
+                </ul>
+                <div class="section-title">2 DROPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item">Airport → Jallapur</li>
+                    <li class="trip-item">Airport → Suraram</li>
+                </ul>
+                <div class="heavy-warning">
+                    ⚠️ <strong>Heavy Duty:</strong> Maximum range exceeded.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card status-off">
+            <div class="card-header">
+                <div class="date">📅 23/11/2025</div>
+                <div class="km-badge off">REST DAY</div>
+            </div>
+            <div class="card-body">
+                <strong>Sunday Leave</strong><br>
+                Took rest due to fatigue from previous day's heavy duty (350km).
+            </div>
+        </div>
+
+        <div class="day-card status-heavy" style="border-left: 5px solid #d81b60; box-shadow: 0 4px 15px rgba(216, 27, 96, 0.2);">
+            <div class="card-header" style="background:#fff0f6;">
+                <div class="date" style="color:#d81b60">📅 24/11/2025 (Today)</div>
+                <div class="km-badge heavy" style="background:#d81b60; color:white;">⚠ 262 KM</div>
+            </div>
+            <div class="card-body">
+                <div class="duty-time" style="background:#fce4ec; color:#880e4f;">
+                    ⏱ Duty: 11 Hrs 45 Mins (6:00 AM - 5:45 PM)
+                </div>
+
+                <div class="section-title">3 PICKUPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item">Bowenpally</li>
+                    <li class="trip-item">Attapur → Airport</li>
+                    <li class="trip-item">Airport → <span class="telugu">JAKKULASRICHARAN (జక్కులశ్రిచారాన్)</span></li>
+                </ul>
+
+                <div class="section-title">3 DROPS</div>
+                <ul class="trip-list">
+                    <li class="trip-item"><span class="telugu">JAKKULASRICHARAN</span> → Airport ORR</li>
+                    <li class="trip-item">Airport Departure → Local</li>
+                    <li class="trip-item" style="font-weight:bold; color:#d81b60;">Airport → Abids (Final)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
     
-    
-    
-    
-    <div class="footer">Generated for Record Keeping</div>
-</div>
+    <div style="text-align:center; padding:20px; color:#999; font-size:12px;">
+        Generated by Driver Log System • Safe Drive
+    </div>
 
 </body>
 </html>
